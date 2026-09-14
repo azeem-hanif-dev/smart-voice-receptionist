@@ -1,0 +1,24 @@
+{
+  "name": "ai-receptionist",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter @ar/api --filter @ar/web dev",
+    "build": "pnpm -r --filter @ar/api --filter @ar/web build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r --workspace-concurrency=1 test",
+    "db:generate": "pnpm --filter @ar/db generate",
+    "db:migrate": "pnpm --filter @ar/db migrate",
+    "db:migrate:deploy": "pnpm --filter @ar/db migrate:deploy",
+    "db:seed": "pnpm --filter @ar/db seed",
+    "db:reset": "pnpm --filter @ar/db reset",
+    "demo": "pnpm --filter @ar/api demo",
+    "demo:video": "node scripts/record-demo.mjs",
+    "postinstall": "node scripts/link-env.mjs && pnpm --filter @ar/db generate"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0",
+    "typescript": "5.9.3"
+  }
+}
